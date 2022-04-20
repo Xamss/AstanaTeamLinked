@@ -30,4 +30,12 @@ class PagesController extends Controller
     public function app(){
         return view('layouts.app');
     }
+
+    public function posts(){
+        return view('pages.posts');
+    }
+
+    public function post(){
+        return view('pages.post');
+    }
 }
