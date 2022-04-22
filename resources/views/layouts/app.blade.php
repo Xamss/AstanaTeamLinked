@@ -9,6 +9,8 @@
         <title>{{config('app.name', 'APP_NAME')}}</title>
     </head>
     <body class="antialiased">
+        {{View::make('components/header')}}
         @yield('content')
+        {{View::make('components/footer')}}
     </body>
 </html>

@@ -44,7 +44,7 @@ class Post
 //            return $file->getContents();
 //        }, $files);
 
-        return cache()->rememberForever('posts', function(){
+        return cache()->remember('posts',5, function(){
             $files = File::files(resource_path("posts"));
             return collect($files)
                 ->map(function($file){
@@ -90,9 +90,12 @@ class Post
 //        );
 //        return cache()->remember(".post.{$slug}", 10, fn() => $posts);
 
+        $post = static::all()->firstWhere('slug', $slug);
 
-        $posts = static::all();
+        if(!($post)){
+            throw new ModelNotFoundException();
+        }
 
-        return $posts->firstWhere('slug', $slug);
+        return $post;
     }
 }
