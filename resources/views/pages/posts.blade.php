@@ -1,6 +1,6 @@
 <x-postlayout>
     @foreach ($posts as $post)
-        <article>
+        <article style="background: {!!$post->color!!}">
             <h1>
                 <a href="/posts/{{$post->slug}}">
                     {{$post->name}}
@@ -11,7 +11,7 @@
                     {{$post->body}}
                 </p>
             </div>
-            <h16>{{$post->date}}</h16>
+            <p class="date-post">{{$post->date}}</p>
         </article>
     @endforeach
 </x-postlayout>

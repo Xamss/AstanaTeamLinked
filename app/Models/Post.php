@@ -16,9 +16,10 @@ class Post
     public $contact;
     public $body;
     public $slug;
+    public $color;
 
 
-    public function __construct($name, $age, $date, $profession, $experience, $contact, $body, $slug)
+    public function __construct($name, $age, $date, $profession, $experience, $contact, $body, $slug, $color)
     {
         $this->name = $name;
         $this->age = $age;
@@ -28,6 +29,7 @@ class Post
         $this->contact = $contact;
         $this->body = $body;
         $this->slug = $slug;
+        $this->color = $color;
     }
 
     public static function all(){
@@ -44,7 +46,7 @@ class Post
 //            return $file->getContents();
 //        }, $files);
 
-        return cache()->remember('posts',5, function(){
+        return cache()->remember('posts.all',5, function(){
             $files = File::files(resource_path("posts"));
             return collect($files)
                 ->map(function($file){
@@ -59,7 +61,8 @@ class Post
                         $document->experience,
                         $document->contact,
                         $document->body(),
-                        $document->slug
+                        $document->slug,
+                        $document->color
                     );
                 })
                 ->sortByDesc('date');

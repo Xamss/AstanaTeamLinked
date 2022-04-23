@@ -58,3 +58,7 @@ Route::get('/posts/{post}', function($slug){
 Route::get('/main', function (){
    return view('pages/main');
 });
+
+Route::get('/profile', function (){
+    return view('pages/profile');
+});
