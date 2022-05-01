@@ -2,103 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\File;
-use Spatie\YamlFrontMatter\YamlFrontMatter;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Post
+class Post extends Model
 {
-    public $name;
-    public $age;
-    public $date;
-    public $profession;
-    public $experience;
-    public $contact;
-    public $body;
-    public $slug;
-    public $color;
+    use HasFactory;
 
+    protected $fillable = ['slug', 'name', 'age', 'profession', 'experience', 'body', 'category_id', 'user_id'];
 
-    public function __construct($name, $age, $date, $profession, $experience, $contact, $body, $slug, $color)
-    {
-        $this->name = $name;
-        $this->age = $age;
-        $this->date = $date;
-        $this->profession = $profession;
-        $this->experience = $experience;
-        $this->contact = $contact;
-        $this->body = $body;
-        $this->slug = $slug;
-        $this->color = $color;
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 
-    public static function all(){
-        #TESTING
-//        $documents = File::allFiles(resource_path("posts"));
-//        return array_map(
-//            ->map
-//            ,$documents);
-//        cache()->rememberForever('posts.all', );
 
-//        $files = File::files(resource_path("/posts/"));
-//
-//        array_map(function ($file){
-//            return $file->getContents();
-//        }, $files);
-
-        return cache()->remember('posts.all',5, function(){
-            $files = File::files(resource_path("posts"));
-            return collect($files)
-                ->map(function($file){
-                    return YamlFrontMatter::parseFile($file);
-                })
-                ->map(function($document){
-                    return new Post(
-                        $document->name,
-                        $document->age,
-                        $document->date,
-                        $document->profession,
-                        $document->experience,
-                        $document->contact,
-                        $document->body(),
-                        $document->slug,
-                        $document->color
-                    );
-                })
-                ->sortByDesc('date');
-            });
-
-
-    }
-
-    public static function find($slug){
-        #TESTING
-       // $files = this->all();
-#TESTING
-//        $path = resource_path("/posts/{$slug}.html");
-//        if(!file_exists($path)){
-//            throw new ModelNotFoundException();
-//        }
-//
-//        $document = YamlFrontMatter::parseFile($path);
-//        $posts = new Post(
-//            $document->name,
-//            $document->age,
-//            $document->date,
-//            $document->profession,
-//            $document->experience,
-//            $document->contact,
-//            $document->body(),
-//            $document->slug
-//        );
-//        return cache()->remember(".post.{$slug}", 10, fn() => $posts);
-
-        $post = static::all()->firstWhere('slug', $slug);
-
-        if(!($post)){
-            throw new ModelNotFoundException();
-        }
-
-        return $post;
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

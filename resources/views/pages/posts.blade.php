@@ -6,6 +6,8 @@
                     {{$post->name}}
                 </a>
             </h1>
+            <p>Posted by <a href="/users/{{$post->user->id}}">{{$post->user->name}}</a></p>
+            <p>Category: <a href="/categories/{{$post->category->slug}}">{{$post->category->name}}</a></p>
             <div>
                 <p>
                     {{$post->body}}
