@@ -12,4 +12,12 @@ class Project extends Model
     public function members(){
         return $this->belongsToMany(User::class);
     }
+
+    public function messages(){
+        return $this->hasMany(Message::class);
+    }
+
+    public function creator(){
+        return $this->belongsTo(User::class);
+    }
 }

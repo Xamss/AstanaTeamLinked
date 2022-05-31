@@ -18,9 +18,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
         'email',
-        'password',
+        'password'
     ];
 
     /**
@@ -42,11 +42,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function setPasswordAttribute($password){
+        $this->attributes['password'] = bcrypt($password);
+    }
+
     public function posts(){
         return $this->hasMany(Post::class);
     }
 
     public function projects(){
         return $this->belongsToMany(Project::class);
+    }
+
+    public function messages(){
+        return $this->hasMany(Message::class);
+    }
+
+    public function owner(){
+        return $this->hasMany(Project::class);
     }
 }

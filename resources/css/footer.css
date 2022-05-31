@@ -1,0 +1,20 @@
+.footer{
+    width: 100vw;
+    height: 8vh;
+    text-align:center;
+    background:#2b3b4b;
+}
+
+.footer-box{
+    display:flex;
+    justify-content: center;
+}
+
+.footer-img{
+    height: 8vh;
+}
+
+.footer-name{
+    text-align: center;
+}
+

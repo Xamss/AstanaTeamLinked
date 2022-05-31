@@ -1,0 +1,20 @@
+.footer{
+    width: 100vw;
+    height: 5vh;
+    background: #abadb4;
+}
+
+.footer-box{
+    display:flex;
+    justify-content: center;
+}
+
+.footer-img{
+
+}
+
+.footer-name{
+
+}
+
+

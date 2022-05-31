@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -18,19 +21,11 @@ Route::get('/app', 'App\Http\Controllers\PagesController@app');
 
 
 
-Route::get('/posts', function(){
-
-    return view('pages.posts', ['posts'=> Post::latest()->with('category', 'user')->get()]);
-
-});
+Route::get('/posts', [PostController::class, 'index']);
 
 
 
-Route::get('/posts/{post:slug}', function(Post $post){
-
-    return view('pages.post', ['post'=> $post->load('category','user')]);
-
-});
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 
 Route::get('/profile', function (){
@@ -53,12 +48,18 @@ Route::get('/home', function(User $user){
     return view('pages/home');
 });
 
-Route::get('/authentication', function(User $user){
-    return view('pages/authentication');
-});
+
 
 Route::get('/message', function(User $user){
     return view('pages/message');
 });
 
 
+Route::get('/authentication', [RegisterController::class, 'create'])->middleware('guest');
+
+Route::post('/authentication', [RegisterController::class, 'store'])->middleware('auth');
+
+
+Route::post('/posts', [SessionController::class, 'destroy'])->middleware('auth');
+
+Route::get('/posts', [SessionController::class, 'store'])->middleware('guest');

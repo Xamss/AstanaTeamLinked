@@ -16,8 +16,8 @@ class PostFactory extends Factory
     {
         return [
             'slug'=>$this->faker->slug,
-            'user_id'=>\App\Models\User::factory(),
-            'category_id'=>\App\Models\Category::factory(),
+            'user_id'=>\App\Models\User::all()->random(),
+            'category_id'=>\App\Models\Category::all()->random(),
             'age'=>$this->faker->numberBetween(0, 30),
             'profession'=>$this->faker->word,
             'experience'=>$this->faker->sentence,

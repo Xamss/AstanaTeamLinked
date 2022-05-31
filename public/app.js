@@ -1,9 +1,9 @@
 function formValidation()
 {
-    let password1 = document.registration.user_pass;
+    let password1 = document.registration.password;
     let password2 = document.registration.user_pass_check;
-    let username = document.registration.user_name;
-    let email = document.registration.user_email;
+    let username = document.registration.first_name;
+    let email = document.registration.email;
     if (username.value == "")
     {
 
@@ -79,7 +79,6 @@ function MatchPassword(password1, password2)
     }
     else
     {
-        window.alert("GOOD JOB!!!");
         return true;
     }
 }
@@ -88,13 +87,13 @@ function MatchPassword(password1, password2)
 function formValidation2()
 {
     let password1 = document.authorization.password;
-    let username = document.authorization.username;
-    if (username.value == "")
+    let email = document.authorization.email;
+    if (email.value == "")
     {
-        window.alert("Please enter your name.");
+        window.alert("Please enter your email.");
         return false;
     }
-    if(UsernameValidation(username))
+    if(EmailValidation(email))
     {
         if(PasswordValidation(password1))
         {

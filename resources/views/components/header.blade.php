@@ -11,14 +11,16 @@
                     <a class="nav-link" href="/posts">Explore</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="/authentication">Log in/Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#">Register</a>
                 </li>
+                @auth
                 <li class="nav-item">
                     <a class="nav-link" href="/profile  ">Account</a>
                 </li>
+                @endauth
             </ul>
         </div>
     </div>

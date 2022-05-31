@@ -19,8 +19,16 @@
             </div>
         </div>
     </div>
-	<div class="header-top">
-				<h2>Timur Omarov</h2>
+    @auth
+        <div class="header-top">
+				<h2>
+                    {{auth()->user()->first_name}}
+                </h2>
+                <form method="POST" action="/posts">
+                    @csrf
+
+                    <button type="submit">Log Out</button>
+                </form>
 				<small>Web content manager<br>Kazakhstan, Nur-Sultan</small>
 	</div>
 	<div class="about">
@@ -217,7 +225,10 @@
 		<div class="container">
 			<p class="developer">Astana IT team</p>
 		</div>
+        @else
+            You're not logged in
 	</div>
+    @endauth
 </body>
 </html>
 

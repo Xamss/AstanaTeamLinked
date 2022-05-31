@@ -388,10 +388,26 @@ span.devide-line{
 }
 
 .footer{
-    padding:2em 0;
+    width: 100vw;
+    height: 8vh!important;
     text-align:center;
     background:#2b3b4b;
 }
+
+.footer-box{
+    display:flex;
+    justify-content: center;
+}
+
+.footer-img{
+    height: 8vh;
+    width:auto;
+}
+
+.footer-name{
+    align-self: center;
+}
+
 p.developer{
     font-size:15px;
     color:#fff;
