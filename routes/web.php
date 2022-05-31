@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
@@ -12,10 +13,7 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::view('/welcome', 'pages/welcome');
 
 Route::get('/app', 'App\Http\Controllers\PagesController@app');
 
@@ -28,9 +26,7 @@ Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 
-Route::get('/profile', function (){
-    return view('pages/profile');
-});
+Route::get('/profile',[AccountController::class, 'show'])->middleware('auth');
 
 Route::get('/categories/{category:slug}', function(Category $category){
     return view('pages/posts',
@@ -50,16 +46,23 @@ Route::get('/home', function(User $user){
 
 
 
-Route::get('/message', function(User $user){
+Route::get('/messages', function(User $user){
     return view('pages/message');
+})->middleware('auth');
+
+Route::view('/authentication', 'pages/authentication');
+
+Route::prefix('guest')->group(function(){
+    Route::get('/welcome', [SessionController::class, 'view']);
+    Route::post('/welcome', [SessionController::class, 'destroy'])->middleware('auth');
+});
+
+Route::prefix('user')->group(function(){
+    Route::post('/welcome', [RegisterController::class, 'store'])->middleware('guest');
+    Route::get('/welcome', [SessionController::class, 'store']);
 });
 
 
-Route::get('/authentication', [RegisterController::class, 'create'])->middleware('guest');
-
-Route::post('/authentication', [RegisterController::class, 'store'])->middleware('auth');
 
 
-Route::post('/posts', [SessionController::class, 'destroy'])->middleware('auth');
 
-Route::get('/posts', [SessionController::class, 'store'])->middleware('guest');

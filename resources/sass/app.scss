@@ -1,3 +1,4 @@
+
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
@@ -8,3 +9,12 @@
 @import '~bootstrap/scss/bootstrap';
 
 @import 'custom';
+
+html,body
+{
+    overflow-x: hidden;
+}
+
+.container-mess{
+    margin:auto;
+}

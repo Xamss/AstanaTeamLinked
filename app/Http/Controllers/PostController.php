@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index(){
-        return view('pages.posts', ['posts'=> Post::latest()->with('category', 'user')->get()]);
+        return view('pages.home', ['posts'=> Post::paginate(10)]);
     }
 
     public function show(Post $post){

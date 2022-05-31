@@ -14,6 +14,5 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .babel('resources/js/message.js', 'public/js/message.es5.js')
-    .sass('resources/sass/message.scss', 'public/css')
     .css('resources/css/footer.css','public/css')
     .sourceMaps();

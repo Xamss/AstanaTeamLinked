@@ -7,11 +7,9 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    public function create(){
-        return view('pages/authentication');
-    }
 
     public function store(){
+
         $attributes = request()->validate([
             'first_name'=>'required|max:255|min:3',
             'email'=>'required|email',
@@ -22,6 +20,6 @@ class RegisterController extends Controller
 
         auth()->login($user);
 
-        return redirect('/profile');
+        return redirect('/user/welcome');
     }
 }

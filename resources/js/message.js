@@ -7,10 +7,10 @@ let friends = {
         name: ''
     },
     chat = {
-        container: document.querySelector('.container .right'),
+        container: document.querySelector('.container-mess .right'),
         current: null,
         person: null,
-        name: document.querySelector('.container .right .top .name')
+        name: document.querySelector('.container-mess .right .top .name')
     }
 
 friends.all.forEach(f => {

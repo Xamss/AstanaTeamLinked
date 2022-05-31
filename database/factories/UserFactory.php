@@ -15,14 +15,14 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'first_name' => $this->faker->name(),
+            'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
             'date_of_birth'=>$this->faker->date(),
-            'city'=>$this->faker->word(),
+            'city'=>$this->faker->city(),
             'telephone'=>$this->faker->numberBetween(87000000, 87999999),
             'gitURL'=>$this->faker->url(),
-            'skills'=>$this->faker->sentence,
-            'awards'=>$this->faker->sentence,
+            'skills'=>$this->faker->jobTitle,
+            'awards'=>$this->faker->sentence(4),
             'exp_edu'=>$this->faker->sentence,
             'desc'=>$this->faker->paragraph,
             'email' => $this->faker->unique()->safeEmail(),

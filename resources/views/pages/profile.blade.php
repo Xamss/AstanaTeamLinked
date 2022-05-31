@@ -3,17 +3,19 @@
 <html>
 <head>
 <title>Profile</title>
-<link rel="stylesheet" href="{{asset('css/app.css')}}">
-<link rel="stylesheet" href="/app.css">
+<link rel="stylesheet" href="{{asset('css/app.css')}}"/>
+<link rel="stylesheet" href="/app.css"/>
+<link rel="stylesheet" href="https://d3a1eo0ozlzntn.cloudfront.net/assets/css/main_v2-built.dba8de4033.v2.css">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
 </head>
 <body>
     {{View::make('components/header')}}
     <div class="header">
-        <div class="container">
+        <div class="container-mess">
             <div class="header-profile">
                 <img src="images/profile.png" alt=""/>
             </div>
@@ -24,7 +26,7 @@
 				<h2>
                     {{auth()->user()->first_name}}
                 </h2>
-                <form method="POST" action="/posts">
+                <form method="POST" action="guest/welcome">
                     @csrf
 
                     <button type="submit">Log Out</button>
@@ -32,7 +34,7 @@
 				<small>Web content manager<br>Kazakhstan, Nur-Sultan</small>
 	</div>
 	<div class="about">
-		<div class="container">
+		<div class="container-mess">
 			<div class="about-top">
 				<h3 class="top-title">About Me</h3>
 				<span class="line"></span>
@@ -42,7 +44,7 @@
 		</div>
 	</div>
 	<div class="experience">
-		<div class="container">
+		<div class="container-mess">
 			<div class="exp-top">
 				<h3 class="top-title">Journey</h3>
 				<span class="line"></span>
@@ -92,7 +94,7 @@
 	</div>
 
 	<div class="skills">
-		<div class="container">
+		<div class="container-mess">
 			<div class="skills-top">
 				<h3 class="top-title">Skills</h3>
 				<span class="line"></span>
@@ -157,7 +159,7 @@
 	</div>
 
 	<div class="awards">
-		<div class="container">
+		<div class="container-mess">
 			<div class="awards-top">
 				<h3 class="top-title">AWARDS & ACHIEVEMENTS</h3>
 				<span class="line"></span>
@@ -189,7 +191,7 @@
 	</div>
 
 	<div class="contact">
-		<div class="container" style="display: flex; align-items: center">
+		<div class="container-mess" style="display: flex; align-items: center">
 			<div class="col-md-8 contact-top">
 				<h3 class="top-title">Contact Me</h3>
 				<span class="line"></span>
@@ -222,7 +224,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		<div class="container">
+		<div class="container-mess">
 			<p class="developer">Astana IT team</p>
 		</div>
         @else

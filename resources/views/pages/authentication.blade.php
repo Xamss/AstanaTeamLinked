@@ -6,7 +6,7 @@
         <p>Lorem iopsum dolor sit amit,consetetur sadipscing eliter,sed diam voluptua.At vero  eso et accusam et justo duo dolores et ea rebum. </p>
 
         <ul class="left-form">
-            <form  method="post" action="" onsubmit="return formValidation()" name="registration">
+            <form  method="post" action="user/welcome" onsubmit="return formValidation()" name="registration">
                 <h2>New Account:</h2>
                 @csrf
                 <li>
@@ -31,7 +31,7 @@
         </ul>
 
         <ul class="right-form">
-            <form  method="get" action="/posts" onsubmit = "return formValidation2()" name="authorization">
+            <form  method="get" action="user/welcome" onsubmit = "return formValidation2()" name="authorization">
                 <h3>Login:</h3>
                 @csrf
                 <div>

@@ -11286,3 +11286,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+html, body {
+  overflow-x: hidden;
+}
+
+.container-mess {
+  margin: auto;
+}
