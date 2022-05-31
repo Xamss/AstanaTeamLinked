@@ -23,10 +23,10 @@ class SessionController extends Controller
     }
 
     public function store(){
-        if(!Auth::check()){
-            return redirect('guest/welcome');
-        }
         if(!request()->has('_token')){
+            if(!Auth::check()){
+                return redirect('guest/welcome');
+            }
             return view_user();
         }
         if(!Auth::check()){

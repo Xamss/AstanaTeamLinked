@@ -12,16 +12,10 @@ use Carbon\Carbon;
                             <div class="dashboard-projects col-12 col-md-5 col-lg-4 col-xl projects-column fixed-height-column overflow-auto scroll-touch leads-list-container border-right" id="dashboard-projects" style="max-height: 543px;">
                                 <div class="all-projects-header sticky-top text-xs">
                                     <div class="row no-gutters px-4 pl-xl-5 py-3">
-                                        <div class="col-6">
-                                            <div class="results-count-filter">Showing all 10 out of {{$posts}} leads</div>
-                                            <div class="last-updated text-light-grey text-xs d-none d-lg-block">
-                                                <p class="mb-0">
-                                                    Updated <span>6h ago</span>
-                                                    <a href="#" class="refresh-link">Refresh</a>
-                                                </p>
-                                            </div>
+                                        <div class="col-8">
+                                            <div class="results-count-filter">Showing all 10 out of {{$posts->total()}} requests</div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-4">
                                             <div x-data="{ open: false }" style = "position:relative; " class="d-flex filter-mobile filter-icon-wrapper justify-content-end fresh-filter-row">
                                                 <span class="bark-svg-icon bsi-primary-primary">
                                                     <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -39,10 +33,12 @@ use Carbon\Carbon;
 
                                                 <div x-show="open"  style = "position:absolute; top: 35px; display:block; background: white;" @click.outside="open = false">
                                                     <ul style="padding: 0px!important;">
-                                                        @foreach ($posts as $post)
-                                                            <li style="list-style:none;">
-                                                                {{dd($post)}}
-                                                            </li>
+                                                        @foreach ($categories as $category)
+                                                            <a href="/posts/?category={{$category->slug}}">
+                                                                <li style="list-style:none;">
+                                                                    {{$category->name}}
+                                                                </li>
+                                                            </a>
                                                         @endforeach
                                                     </ul>
                                                 </div>
@@ -51,6 +47,7 @@ use Carbon\Carbon;
                                     </div>
                                     <div style= "display:flex; justify-content:center;">
                                         {{ $posts->links() }}
+
                                     </div>
                                 </div>
 

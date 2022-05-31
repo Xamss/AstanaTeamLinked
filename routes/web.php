@@ -62,7 +62,7 @@ Route::prefix('user')->group(function(){
     Route::get('/welcome', [SessionController::class, 'store']);
 });
 
-
+Route::get('/profile/{user}/edit', [AccountController::class, 'edit'])->middleware('auth');
 
 
 
